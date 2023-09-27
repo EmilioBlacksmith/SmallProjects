@@ -17,6 +17,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <div class="name">
             pages
           </div>
+          <form>
+            <button>delete book</button>
+          </form>
         </div>
         
         <!-- NEW BOOK Section-->
