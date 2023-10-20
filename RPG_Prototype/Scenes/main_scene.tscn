@@ -30,8 +30,6 @@ transform = Transform3D(0.950261, 0, -0.311456, 0, 1, 0, 0.311456, 0, 0.950261, 
 use_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_idwy7")]
-Speed = 10.0
-JumpVelocity = 10.0
 
 [node name="Lighting" type="Node3D" parent="."]
 
