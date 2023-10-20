@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceburmsmt1dy7"]
+
+[ext_resource type="Script" path="res://Scripts/ColorRect.gd" id="1_cff8i"]
+[ext_resource type="PackedScene" uid="uid://1eigufmlcnjb" path="res://Scenes/player.tscn" id="2_y20q7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdsuf"]
+albedo_color = Color(0.686275, 0.192157, 0, 1)
+
+[sub_resource type="Sky" id="Sky_i5i0d"]
+
+[sub_resource type="Environment" id="Environment_eoo22"]
+background_mode = 1
+background_color = Color(0, 0.443137, 0.54902, 1)
+sky = SubResource("Sky_i5i0d")
+ambient_light_color = Color(0.0666667, 0.392157, 0.447059, 1)
+tonemap_mode = 3
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+adjustment_enabled = true
+adjustment_contrast = 1.16
+adjustment_saturation = 1.16
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fl2bm"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 2.5
+dof_blur_far_transition = 15.0
+dof_blur_amount = 0.03
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6vjd"]
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+
+[node name="Scene" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(500, 0, 0, 0, 0.1, 0, 0, 0, 500, 0, -0.0751019, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_gdsuf")
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_eoo22")
+camera_attributes = SubResource("CameraAttributesPractical_fl2bm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(0.986922, 0.123267, 0.103877, -0.133547, 0.264336, 0.95514, 0.0902787, -0.956521, 0.277341, 0, 5.49368, 0)
+shadow_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 329.0
+offset_bottom = 106.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_cff8i")
+
+[node name="FPS_Counter" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 62.0
+offset_bottom = 43.0
+text = "100"
+label_settings = SubResource("LabelSettings_w6vjd")
+
+[node name="player" parent="." instance=ExtResource("2_y20q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

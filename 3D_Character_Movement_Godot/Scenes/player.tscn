@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://1eigufmlcnjb"]
+
+[ext_resource type="PackedScene" uid="uid://pwju58sc47c2" path="res://Assets/Models/Y Bot.fbx" id="1_30qbu"]
+[ext_resource type="Script" path="res://Scripts/CharacterController/player.gd" id="1_hal0g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qe5sk"]
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_hal0g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_qe5sk")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Y Bot" parent="Visuals" instance=ExtResource("1_30qbu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="camera_mount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38137, 0)
+
+[node name="Camera3D" type="Camera3D" parent="camera_mount"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.23392, 2.88474)

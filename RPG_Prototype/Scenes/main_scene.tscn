@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6fij0aljjlg"]
+
+[ext_resource type="PackedScene" uid="uid://44t36j33q3qk" path="res://Scenes/Player.tscn" id="1_idwy7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eh1jy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ru6y5"]
+albedo_color = Color(0.284332, 0.372308, 0.434471, 1)
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Environment"]
+transform = Transform3D(3035.98, 0, 0, 0, 3035.98, 0, 0, 0, 3035.98, 0, 0, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_eh1jy")
+material = SubResource("StandardMaterial3D_ru6y5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56834, 0.415537, -6.18516)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(0.747647, 0, -0.664096, 0, 1, 0, 0.664096, 0, 0.747647, 3.48868, 0.415537, -6.18516)
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(0.950261, 0, -0.311456, 0, 1, 0, 0.311456, 0, 0.950261, 3.48868, 0.415537, 1.83804)
+use_collision = true
+
+[node name="Player" parent="." instance=ExtResource("1_idwy7")]
+Speed = 10.0
+JumpVelocity = 10.0
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.6468, 0)
+shadow_enabled = true
