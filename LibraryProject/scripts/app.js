@@ -1,6 +1,7 @@
 // Show and Hide New Book Form
 const newBookButton = document.getElementById("newBookButton");
 const newBookForm = document.getElementById("newBookForm");
+const cancelButton = document.getElementById("cancelForm");
 
 function showNewBookForm() {
     if(newBookForm.classList.contains("hidden")){
@@ -13,5 +14,6 @@ function showNewBookForm() {
 }
 
 newBookButton.addEventListener("click", showNewBookForm);
+cancelButton.addEventListener("click", showNewBookForm);
 
 // 
