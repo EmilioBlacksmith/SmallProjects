@@ -8,8 +8,31 @@
     <title>Library</title>
 </head>
 <body>
-    <div id="root">
-        
+    <div class="root">
+        <h1>Big Ass Library</h1>
+        <div class="bookshelf">
+            <div id="newBookButton" class="BookCard">
+                Add New Book...
+            </div>
+            
+        </div>
+        <div id="newBookForm" class="hidden">
+            <form>
+                <h2>ADD NEW BOOK</h2>
+                <label for="bookTitle">Book Title:</label>
+                <input type="text" id="bookTitle" placeholder="Atomic Habits">
+                <label for="bookAuthor">Book Author:</label>
+                <input type="text" id="bookAuthor" placeholder="James Clear">
+                <label for="bookYear">Published in:</label>
+                <input type="number" id="bookYear" placeholder="2018">
+                <label for="bookPages">Number of Pages:</label>
+                <input type="number" id="bookPages" placeholder="320">
+                <label for="read">Read?</label>
+                <input type="checkbox" id="read">
+                <button>Add New Book</button>
+                <button onclick={showNewBookForm()}>Cancel</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
