@@ -30,8 +30,10 @@ function Book(title, author, year, pages, read, id){
     this.id = id;
 }
 
-bookShelf.push(new Book("Atomic Habits", "James Clear", 2018, 320, "unchecked", bookShelf.length));
-bookShelf.push(new Book("Example Book 2", "Example Author 2", 2023, 420, "checked", bookShelf.length));
+bookShelf.push(new Book("Atomic Habits", "James Clear", 2018, 320, "checked", bookShelf.length));
+bookShelf.push(new Book("Models: Attract Women Through Honesty", "Mark Manson", 2011, 260, "unchecked", bookShelf.length));
+bookShelf.push(new Book("Code Complete", "Steve McConnell", 1993, 914, "unchecked", bookShelf.length));
+bookShelf.push(new Book("The 48 Laws of Power", "Robert Greene", 1998, 480, "unchecked", bookShelf.length));
 
 function updateBookshelf() {
 
@@ -57,7 +59,13 @@ function updateBookshelf() {
             </form>
             <input type="button" id="deleteEntry" value="🗑" data-book-id="` + i + `">
         `
+
         booksContainer.appendChild(newBook);
+
+        let button = document.querySelector("[data-book-id='" + i + "']");
+        button.addEventListener("click", () => {
+            deleteBookFromArray(i);
+        });
     }
 }
 
@@ -88,4 +96,9 @@ function addNewBook(){
 
 addBookButton.addEventListener('click', addNewBook);
 
+// Delete Book
 
+function deleteBookFromArray(id){
+    bookShelf.splice(parseInt(id), 1);
+    updateBookshelf();
+}
