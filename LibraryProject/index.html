@@ -9,12 +9,12 @@
 </head>
 <body>
     <div class="root">
-        <h1>Big Ass Library</h1>
+        <h1>Library Project with Vanilla JS</h1>
         <div class="bookshelf" id="bookshelf">
             <div id="newBookButton" class="BookCard">
                 +
             </div>
-            <div class="BookCard">
+            <div class="BookCard" data-card-type="Book">
                 <div class="bookTitle">Depression Lane</div>
                 <div class="authorName">By my brain cells</div>
                 <div class="bookYear">Published in 2023</div>
@@ -39,7 +39,7 @@
                 <input type="number" id="bookPages" placeholder="320">
                 <label for="read">Read?</label>
                 <input type="checkbox" id="read">
-                <input type="button" value="Add New Book">
+                <input type="button" value="Add New Book" id="addNewBookButton">
                 <input type="button" value="Cancel" id="cancelForm">
             </form>
         </div>
