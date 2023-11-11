@@ -90,6 +90,12 @@ function addNewBook(){
         bookShelf.length);
     
     bookShelf.push(newBook);
+    bookTitleInput.value = '';
+    bookAuthorInput.value = '';
+    bookYearInput.value = '';
+    bookPagesInput.value = '';
+    bookReadInput.checked = false;
+
     updateBookshelf();
     showNewBookForm();
 }
