@@ -34,27 +34,58 @@ bookShelf.push(new Book("Atomic Habits", "James Clear", 2018, 320, "unchecked", 
 bookShelf.push(new Book("Example Book 2", "Example Author 2", 2023, 420, "checked", bookShelf.length));
 
 function updateBookshelf() {
-    
 
+    let oldEntries = document.querySelectorAll("[data-card-type='Book']");
+    oldEntries.forEach((el) => {
+        el.remove();
+    })
+    
     for(let i = 0; i < bookShelf.length; i++){
         let newBook = document.createElement('div');
         newBook.classList.add('BookCard');
+        newBook.dataset.cardType = 'Book';
+        newBook.id = i;
         newBook.innerHTML = 
         `
-            <div class="BookCard">
-                <div class="bookTitle">` + bookShelf[i].title + `</div>
-                <div class="authorName">By ` + bookShelf[i].author + `</div>
-                <div class="bookYear">Published in ` + bookShelf[i].year + `</div>
-                <div class="bookPages">Pages: ` + bookShelf[i].pages + `</div>
-                <form>
-                    <label for="bookRead">Read? </label>
-                    <input type="checkbox" id="bookRead" `+ bookShelf[i].read +`>
-                </form>
-                <input type="button" id="deleteEntry" value="🗑">
-            </div>
+            <div class="bookTitle">` + bookShelf[i].title + `</div>
+            <div class="authorName">By ` + bookShelf[i].author + `</div>
+            <div class="bookYear">Published in ` + bookShelf[i].year + `</div>
+            <div class="bookPages">Pages: ` + bookShelf[i].pages + `</div>
+            <form>
+                <label for="bookRead">Read? </label>
+                <input type="checkbox" id="bookRead" `+ bookShelf[i].read +`>
+            </form>
+            <input type="button" id="deleteEntry" value="🗑" data-book-id="` + i + `">
         `
         booksContainer.appendChild(newBook);
     }
 }
 
 updateBookshelf();
+
+// Add new Book
+
+const bookTitleInput = document.getElementById('bookTitle');
+const bookAuthorInput = document.getElementById('bookAuthor');
+const bookYearInput = document.getElementById('bookYear');
+const bookPagesInput = document.getElementById('bookPages');
+const bookReadInput = document.getElementById('read');
+
+const addBookButton = document.getElementById('addNewBookButton');
+
+function addNewBook(){ 
+    let newBook = new Book(bookTitleInput.value,
+        bookAuthorInput.value,
+        bookYearInput.value,
+        bookPagesInput.value, 
+        (bookReadInput.checked) ? "checked" : "unchecked",
+        bookShelf.length);
+    
+    bookShelf.push(newBook);
+    updateBookshelf();
+    showNewBookForm();
+}
+
+addBookButton.addEventListener('click', addNewBook);
+
+
