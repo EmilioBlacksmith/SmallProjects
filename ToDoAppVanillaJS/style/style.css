@@ -7,6 +7,7 @@
 
 body {
   background-color: #1f1f1f;
+  overflow-x: hidden;
 }
 
 #root {
@@ -15,14 +16,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 128px;
   gap: 24px;
 }
 
 #appContainer {
   background-color: #0f0f0f;
   width: 30%;
-  height: 750px;
+  height: fit-content;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -32,7 +34,7 @@ body {
 }
 
 .taskCard {
-  width: 95%;
+  width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
@@ -40,4 +42,13 @@ body {
   cursor: pointer;
   border-radius: 12px;
   background-color: #2f2f2f;
+}
+
+.addButton {
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 10px;
+  align-self: flex-start;
+  background-color: #006d55;
 }
