@@ -11,14 +11,13 @@ function CreateTask() {
     let newTask = new Task("unchecked", newTaskTitle.value);
     let newTaskObject = document.createElement("div");
     newTaskObject.classList.add("taskCard");
+    newTaskObject.setAttribute("draggable", true);
     newTaskObject.innerHTML = `
-    <div class="taskCard" draggable="true">
-          <button class="deleteButton">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-          <p>${newTaskTitle.value}</p>
-          <input type="checkbox" />
-        </div>
+      <button class="deleteButton">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+      <p>${newTaskTitle.value}</p>
+      <input type="checkbox" />
     `;
     newTaskTitle.value = "";
     AppContainer.appendChild(newTaskObject);
