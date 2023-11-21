@@ -13,7 +13,7 @@ function CreateTask() {
     newTaskObject.classList.add("taskCard");
     newTaskObject.innerHTML = `
     <div class="taskCard" draggable="true">
-          <button class="addButton">
+          <button class="deleteButton">
             <i class="fa-solid fa-trash"></i>
           </button>
           <p>${newTaskTitle.value}</p>
