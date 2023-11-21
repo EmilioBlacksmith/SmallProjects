@@ -7,12 +7,17 @@ function Task(checked, title) {
 }
 
 function CreateTask() {
-  let newTask = new Task("unchecked", newTaskTitle.value);
-  let newTaskObject = document.createElement("div");
-  newTaskObject.classList.add("taskCard");
-  newTaskObject.setAttribute("draggable", true);
-  newTaskObject.innerText = newTask.title;
-  AppContainer.appendChild(newTaskObject);
+  if (newTaskTitle.value !== "") {
+    let newTask = new Task("unchecked", newTaskTitle.value);
+    let newTaskObject = document.createElement("div");
+    newTaskObject.classList.add("taskCard");
+    newTaskObject.setAttribute("draggable", true);
+    newTaskObject.innerText = newTask.title;
+    newTaskTitle.value = "";
+    AppContainer.appendChild(newTaskObject);
+  } else {
+    window.alert("the task needs a title, bro");
+  }
 }
 
 // if enter press when on top of task title input, then create task
