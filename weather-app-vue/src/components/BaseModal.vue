@@ -35,6 +35,7 @@ defineProps({
 });
 </script>
 
+<!-- Animations for opening and closing Modal -->
 <style scoped>
 .modal-outer-enter-active,
 .modal-outer-leave-active {
