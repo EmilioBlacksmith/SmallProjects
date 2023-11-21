@@ -16,11 +16,14 @@
   </head>
   <body>
     <div id="root">
-      <h1>To Do App with Vanilla JS 🙊</h1>
+      <h1>To Do App with Vanilla JS</h1>
       <div class="appContainer" id="appContainer">
-        <button class="addButton" onclick="CreateTask('Kill me Jesus')">
-          <i class="fa-solid fa-plus"></i>
-        </button>
+        <div>
+          <button class="addButton" onclick="CreateTask('Kill me Jesus')">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <input type="text" placeholder="Task" id="newTaskTitle">
+        </div>
         <div class="taskCard" draggable="true">This is a Task</div>
         <div class="taskCard" draggable="true">This is another Task</div>
       </div>
