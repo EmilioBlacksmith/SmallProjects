@@ -5,9 +5,9 @@ let TaskList = [];
 
 // Task Object Constructor
 function Task(checked, title, id) {
-  this.checked = checked;
   this.title = title;
   this.id = id;
+  this.checked = checked;
 }
 
 function CreateTask() {
@@ -35,14 +35,28 @@ function UpdateAllTasks() {
   TaskList.forEach((task) => {
     let newTaskObject = document.createElement("div");
     newTaskObject.classList.add("taskCard");
-    newTaskObject.setAttribute("draggable", true);
-    newTaskObject.innerHTML = `
-      <button class="deleteButton" onclick="DeleteTask(${task.id})">
-        <i class="fa-solid fa-trash"></i>
-      </button>
-      <p>${task.title}</p>
-      <input type="checkbox" />
-    `;
+
+    if (task.checked === "checked") {
+      newTaskObject.classList.add("checked");
+      newTaskObject.id = `task-${task.id}`;
+      newTaskObject.innerHTML = `
+        <button class="deleteButton" onclick="DeleteTask(${task.id})">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+        <p>${task.title}</p>
+        <input type="checkbox" onchange="ChangeCheckboxState(${task.id})" checked/>
+      `;
+    } else {
+      newTaskObject.id = `task-${task.id}`;
+      newTaskObject.innerHTML = `
+        <button class="deleteButton" onclick="DeleteTask(${task.id})">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+        <p>${task.title}</p>
+        <input type="checkbox" onchange="ChangeCheckboxState(${task.id})"/>
+      `;
+    }
+
     newTaskTitle.value = "";
     AppContainer.appendChild(newTaskObject);
   });
@@ -66,5 +80,15 @@ function DeleteTask(id) {
   UpdateAllTasks();
 }
 
-// TODO: Change whole parent based on object
-// TODO: Click and Drag Sorting Order
+// Change whole parent based on object
+function ChangeCheckboxState(id) {
+  TaskCardToChange = document.querySelector(`#task-${id}`);
+
+  if (TaskList[id].checked === "unchecked") {
+    TaskList[id].checked = "checked";
+    TaskCardToChange.classList.add("checked");
+  } else {
+    TaskList[id].checked = "unchecked";
+    TaskCardToChange.classList.remove("checked");
+  }
+}
